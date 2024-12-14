@@ -2,12 +2,13 @@ variable "domain_name" {}
 variable "aws_lb_dns_name" {}
 variable "aws_lb_zone_id" {}
 
-resource "aws_route53_zone" "dev_proj_1" {
-  name = var.domain_name
+data "aws_route53_zone" "dev_proj_1_princeokumo_com" {
+  name         = "princeokumo.com"
+  private_zone = false
 }
 
 resource "aws_route53_record" "lb_record" {
-  zone_id = aws_route53_zone.dev_proj_1.zone_id
+  zone_id = data.aws_route53_zone.dev_proj_1_princeokumo_com.zone_id
   name    = var.domain_name
   type    = "A"
 
@@ -19,5 +20,5 @@ resource "aws_route53_record" "lb_record" {
 }
 
 output "hosted_zone_id" {
-  value = aws_route53_zone.dev_proj_1.zone_id
+  value = data.aws_route53_zone.dev_proj_1_princeokumo_com.zone_id
 }

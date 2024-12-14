@@ -1,5 +1,5 @@
 *.pem
 *.tfstate
-*.txt
-provider.tf 
+*.txt 
 .terraform
+id_rsa

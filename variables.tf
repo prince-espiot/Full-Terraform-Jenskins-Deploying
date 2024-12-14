@@ -38,7 +38,3 @@ variable "ec2_ami_id" {
   description = "DevOps Project 2 AMI Id for EC2 instance"
 }
 
-variable "domain_name" {
-  type = string
-  description = "Name of the domain"
-}
